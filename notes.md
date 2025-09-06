@@ -8,6 +8,10 @@
 - [Canvas](https://byu.instructure.com)
 - [MDN](https://developer.mozilla.org)
 
+## Personal Notes
+Using Git: Cd into the directory, then use ls to list the files and code to open them. 
+Git commit and git push to push new updates to the code. 
+
 ## AWS
 
 My IP address is: 54.81.96.130
