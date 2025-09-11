@@ -1,8 +1,8 @@
-# Your startup name here
+# StoryNook
 
 [My Notes](notes.md)
 
-A brief description of the application here. My application will be a website that will serve some purpose. 
+My application is a website that allows anyong to contribute their own writing to a community writing project. 
 
 
 > [!NOTE]
@@ -18,21 +18,21 @@ A brief description of the application here. My application will be a website th
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [`[x]` ] Proper use of Markdown -Added an image and text
+- [`[x]` ] A concise and compelling elevator pitch -Added a short elevator pitch
+- [`[x]` ] Description of key features -Added descriptions for key features
+- [`[x]` ] Description of how you will use each technology -Added descriptions for how I will use the technologys
+- [`[x]` ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references. -Added a rough sketch of my application
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+So many people have so many great ideas just waiting to be put into words, and the StoryKnook allows you to pool those brilliant ideas with everyone else in a collaborative storytelling project. Users can submit their own writing to add to a community story. 
 
 ### Design
 
-![Design image](placeholder.png)
+![Design image](WebsiteMap.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The aboved image shows a map of how users can navigate the webpage. 
 
 ```mermaid
 sequenceDiagram
@@ -43,20 +43,20 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Users can read the community story
+- Users can sign in to add to the story
+- Persistent user-generated text
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Used to determine were crucial elements of the webpage will be place
+- **CSS** - Used to animate how the webpage looks
+- **React** - Used to accept external input to add to the story
+- **Service** - Used to login to add to the story
+- **DB/Login** - Used to determine who can access the website, and store whats written of the story
+- **WebSocket** - Used to update the story for users
 
 ## 🚀 AWS deliverable
 
