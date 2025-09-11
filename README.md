@@ -32,7 +32,7 @@ So many people have so many great ideas just waiting to be put into words, and t
 
 ![Design image](WebsiteMap.png)
 
-The aboved image shows a map of how users can navigate the webpage. 
+The above image shows a map of how users can navigate the webpage. 
 
 ```mermaid
 sequenceDiagram
