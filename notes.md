@@ -12,6 +12,8 @@
 Using Git: Cd into the directory, then use ls to list the files and code to open them. 
 Git commit and git push to push new updates to the code. 
 Make sure to write git commit with -am "Some useful message saying what you did!"
+./deployFiles.sh -k PemKeyLocation -h storynook.click -s simon 
+Used to deploy the files in the current location to the server. Deletes the current files on the server and writes new ones to it. 
 
 ## AWS
 
