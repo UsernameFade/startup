@@ -1,0 +1,25 @@
+body {
+  background-color: #c0dbc0;
+}
+header {
+  background-color: #ad9a6e;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  width: 97%;
+}
+footer {
+  background-color: #ad9a6e;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  bottom: 0;
+  position: fixed;
+  width: 97%;
+}
+h1 {
+   font-family: cursive; 
+   color:black;
+   font-size: 60px;
+
+}
