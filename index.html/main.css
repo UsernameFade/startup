@@ -10,14 +10,17 @@ main {
   padding: 10px;
   margin: 10px;
   width: 97%;
+      display: flex;
 }
 
 header {
+  position: sticky;
   background-color: #ad9a6e;
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
   width: 97%;
+    display: flex;
   flex-direction: column;
   
 }
@@ -43,36 +46,43 @@ h1 {
 li{
     list-style-type: none; 
 color:black;
-    font-size: 20px;
+    font-size: 4px;
       background-color: #ccb588;
-  border-radius: 10px;
-  padding: 5px;
-  margin: 10px;
+  border-radius: 8px;
+  padding: 2px;
+  margin: 2px;
 }
 a{
   color:black;
-    font-size: 20px;  
+    font-size: 14px;  
 }
 
 li :hover{
     color:rgb(0, 0, 0);
     background-color: #858585;
       border-radius: 14px;
-padding: 4px;
+padding: 8px;
 
 
 }
 
 menu{
-  justify-content: center;
+  justify-content: space-between;
     display: flex;
+  text-align:justify;
 
 }
 
 .navbar-brand{
     padding-left: 1em;
+
 }
 
 input{
   margin: 10px;
+}
+
+img{
+    border-radius: 6px;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.5);
 }
