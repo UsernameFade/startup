@@ -17,7 +17,7 @@ header {
   position: sticky;
   background-color: #ad9a6e;
   border-radius: 10px;
-  padding: 10px;
+
   margin: 10px;
   width: 97%;
     display: flex;
@@ -39,7 +39,7 @@ footer {
 h1 {
    font-family: cursive; 
    color:black;
-   font-size: 60px;
+   font-size: 10px;
 
 
 }
@@ -49,8 +49,8 @@ color:black;
     font-size: 4px;
       background-color: #ccb588;
   border-radius: 8px;
-  padding: 2px;
-  margin: 2px;
+  padding: 3px;
+  margin: 3px;
 }
 a{
   color:black;
@@ -68,8 +68,9 @@ padding: 8px;
 
 menu{
   justify-content: space-between;
+      text-align: left;
     display: flex;
-  text-align:justify;
+
 
 }
 
