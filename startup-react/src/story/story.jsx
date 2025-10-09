@@ -1,0 +1,24 @@
+import React from 'react';
+import './story.css';
+
+export function Story() {
+  return (
+<main>
+        <h2>The Story so far:</h2>
+        <h3><p>Websocket+Database placerholder: Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Nulla ultrices consequat justo, a bibendum massa porttitor tempus.
+            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+            Integer malesuada leo arcu, sit amet congue urna hendrerit aliquam. 
+            Donec interdum lobortis sollicitudin. Proin feugiat urna id ante efficitur feugiat.
+            Maecenas luctus mauris nec erat scelerisque, ac volutpat elit accumsan. 
+            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+            Curabitur eleifend, purus ut hendrerit commodo, nunc lectus consequat mauris, vestibulum eleifend diam tortor sit amet nunc. 
+            Ut non lectus eros. Curabitur tincidunt dolor sit amet enim convallis, a lobortis dolor tempus.
+            Phasellus aliquet tortor id lacus porta, vitae pretium metus convallis. 
+            Cras eu semper lectus. Proin id elementum sem. In at tempor urna, et eleifend ante.</p>
+        <p>Proin a bibendum libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce sollicitudin dignissim ullamcorper. Nunc finibus ultricies convallis. Sed lectus sem, suscipit eu porttitor sed, porttitor vel neque. Aliquam eget lacus porttitor, sagittis nibh ut, cursus ex. Nulla a est in ipsum euismod euismod vitae ac ipsum. Vestibulum pulvinar enim sed dui lobortis molestie. Sed porttitor justo magna, a ultricies libero lacinia id. Vestibulum ut ullamcorper orci, vitae efficitur quam. </p>
+        </h3>
+    </main>
+
+  );
+}
