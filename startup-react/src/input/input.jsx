@@ -3,6 +3,7 @@ import './input.css';
 
 export function Input() {
   const [story, setStory] = React.useState('');
+  const userName = localStorage.getItem('userName');
   
     const handleStoryChange = (event) => {
         setStory(event.target.value);
@@ -10,7 +11,7 @@ export function Input() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(story);
-        localStorage.setItem('storyData', story);
+        localStorage.setItem('storyData', story+ "\n" + localStorage.getItem('storyData'));
     };
 
   return (
@@ -20,8 +21,8 @@ export function Input() {
         <input type="text" id="storyInput" name="storyInput" onChange={(handleStoryChange)}></input>
         <input type="submit" value="Submit" onClick={(handleSubmit)}></input>
 
-        <p>{story}</p>
-
+      <h3>Signed in as:</h3>
+      <h3>{userName}</h3>
 
     </main>
 

@@ -9,7 +9,7 @@ import { Story } from './story/story';
 import { Login } from './login/login';
 
 export default function App() {
-      const [story, setStory] = React.useState('Loading...');
+
   return      <BrowserRouter>  <header>
 
         <menu>
@@ -27,12 +27,6 @@ export default function App() {
 
 <Routes>
 
-      
-      
-    
-  
-
-
   <Route path='/' element={<Home />} exact />
   <Route path='/home' element={<Home />} />
   <Route path='/story' element={<Story />} />
@@ -48,7 +42,7 @@ export default function App() {
     </footer>
 
 </BrowserRouter>  
-;
+
 }
 function NotFound() {
   return <main className="container-fluid bg-secondary text-center">404: Return to sender. Address unknown.</main>;

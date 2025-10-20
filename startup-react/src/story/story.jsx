@@ -15,6 +15,9 @@ export function Story() {
     
         <h3>{story}</h3>
         <h3>{storyTest} </h3>
+
+
+
     </main>
 
   );
