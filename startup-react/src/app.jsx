@@ -9,6 +9,7 @@ import { Story } from './story/story';
 import { Login } from './login/login';
 
 export default function App() {
+      const [story, setStory] = React.useState('Loading...');
   return      <BrowserRouter>  <header>
 
         <menu>
@@ -25,6 +26,13 @@ export default function App() {
     </header>
 
 <Routes>
+
+      
+      
+    
+  
+
+
   <Route path='/' element={<Home />} exact />
   <Route path='/home' element={<Home />} />
   <Route path='/story' element={<Story />} />

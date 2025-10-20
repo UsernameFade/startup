@@ -2,7 +2,9 @@ import React from 'react';
 import './login.css';
 
 export function Login() {
+  
   return (
+    
     <main>
         <form method="get" action="Input">
         <div >
@@ -15,5 +17,6 @@ export function Login() {
         <button type="submit" className="btn btn-outline-dark" >Create</button>
       </form>
     </main>
+
   );
 }

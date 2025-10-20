@@ -2,7 +2,8 @@ import React from 'react';
 import './story.css';
 
 export function Story() {
-    const [story, setStory] = React.useState('Loading...');
+      const [story, setStory] = React.useState('');
+      const storyTest = localStorage.getItem('storyData');
     React.useEffect(() => {
       setStory(`Websocket+Database placerholder:`);
         }, []);
@@ -13,6 +14,7 @@ export function Story() {
   
     
         <h3>{story}</h3>
+        <h3>{storyTest} </h3>
     </main>
 
   );
