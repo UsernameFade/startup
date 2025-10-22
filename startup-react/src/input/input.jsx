@@ -5,6 +5,7 @@ export function Input() {
   const [story, setStory] = React.useState('');
   const userName = localStorage.getItem('userName');
   const authState= localStorage.getItem('authState')
+  const [prompt, setPrompt] = React.useState('');
 
     const handleStoryChange = (event) => {
         setStory(event.target.value);
@@ -16,13 +17,18 @@ export function Input() {
     };
 
     if(authState){
+      React.useEffect(() => {
+        setPrompt('Imagine a world without being able to access an api...Now write about it!');
+
+      }, []);
+    
   return (
 
     <main>
         <h2>Add to the story here!</h2>
         <input type="text" id="storyInput" name="storyInput" onChange={(handleStoryChange)}></input>
         <input type="submit" value="Submit" onClick={(handleSubmit)}></input>
-
+      <h3>Writing Prompt: {prompt}</h3>
       <h3>Signed in as:</h3>
       <h3>{userName}</h3>
 
