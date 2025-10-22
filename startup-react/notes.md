@@ -15,6 +15,45 @@ Make sure to write git commit with -am "Some useful message saying what you did!
 ./deployFiles.sh -k ~/keys/production.pem -h storynook.click -s startup
 Used to deploy the files in the current location to the server. Deletes the current files on the server and writes new ones to it. 
 
+<div> tag: division tag. 
+<a href="link"> text </a> Link tag
+
+
+CSS Selectors:
+element selector:
+p{
+  CSS
+}
+Applies to all elements. 
+ID selector:
+#something{
+  CSS
+}
+Selects one unqiue element
+
+class selector:
+.something{
+  CSS
+}
+Everything with the given class will have the CSS applied. 
+
+Class+Element selectors:
+p.something{
+  CSS
+}
+
+* applies to every element
+
+Outside to inside: Margin, Border, Padding, Content
+Content: The content of the box
+Padding: A transparent area around the content
+Border: Goes around the padding (Doesn't have to be transparent)
+Margin: A transparent area around the border. 
+
+Arrow function:
+let functionName = function(a,b) {return a*b}
+
+Span default value: Inline
 
 ## AWS
 
