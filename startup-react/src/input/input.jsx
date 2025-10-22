@@ -4,7 +4,8 @@ import './input.css';
 export function Input() {
   const [story, setStory] = React.useState('');
   const userName = localStorage.getItem('userName');
-  
+  const authState= localStorage.getItem('authState')
+
     const handleStoryChange = (event) => {
         setStory(event.target.value);
     };
@@ -14,6 +15,7 @@ export function Input() {
         localStorage.setItem('storyData', story+ "\n" + localStorage.getItem('storyData'));
     };
 
+    if(authState){
   return (
 
     <main>
@@ -25,8 +27,14 @@ export function Input() {
       <h3>{userName}</h3>
 
     </main>
+ )}else{
+  return (
+        <main>
+        <h2>Please Sign In To Access This Page</h2>
 
-        
+    </main>
 
-  );
+  )
+ }
 }
+  

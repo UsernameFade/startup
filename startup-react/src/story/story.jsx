@@ -5,7 +5,7 @@ export function Story() {
       const [story, setStory] = React.useState('');
       const storyTest = localStorage.getItem('storyData');
     React.useEffect(() => {
-      setStory(`Websocket+Database placerholder:`);
+      setStory(`Websocket+Database placeholder:`);
         }, []);
   return (
 <main>
