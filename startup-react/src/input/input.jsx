@@ -18,7 +18,7 @@ export function Input() {
 
     if(authState){
       React.useEffect(() => {
-        setPrompt('Imagine a world without being able to access an api...Now write about it!');
+        setPrompt("Imagine a world without api's...Now write about it!");
 
       }, []);
     
