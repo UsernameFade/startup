@@ -36,7 +36,7 @@ export function Login() {
         <button type="submit" className="btn btn-outline-dark"   onClick={createUser} disabled={!userName || !password}>Create</button>
         
       </form>
-      <form method="get" action="Home"><button type="submit" className="btn btn-dark" onClick={logoutUser}>Log Out</button></form>
+      <form method="get" action="Home"><button type="submit" className="btn btn-dark" onClick={logoutUser} >Log Out</button></form>
   
 
     </main>

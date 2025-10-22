@@ -6,6 +6,10 @@ export function Input() {
   const userName = localStorage.getItem('userName');
   const authState= localStorage.getItem('authState')
   const [prompt, setPrompt] = React.useState('');
+if(localStorage.getItem('storyData') === null){
+          localStorage.setItem('storyData', "");
+        }
+  
 
     const handleStoryChange = (event) => {
         setStory(event.target.value);
@@ -13,6 +17,9 @@ export function Input() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(story);
+        if(localStorage.getItem('storyData') === null){
+          localStorage.setItem('storyData', "");
+        }
         localStorage.setItem('storyData', story+ "\n" + localStorage.getItem('storyData'));
     };
 
