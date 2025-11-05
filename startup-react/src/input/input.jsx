@@ -25,10 +25,18 @@ if(localStorage.getItem('storyData') === null){
 
     if(authState){
       React.useEffect(() => {
-        setPrompt("Imagine a world without api's...Now write about it!");
 
+        fetch('https://api.adviceslip.com/advice')
+    .then((response) => response.json())
+    .then((json) => {
+      setPrompt(json.slip.advice);
+    })
+    .catch();
       }, []);
-    
+https://api.adviceslip.com/advice
+
+
+
   return (
 
     <main>
