@@ -7,20 +7,34 @@ export function Login() {
   const [password, setPassword] = React.useState('');
 
   async function loginUser() {
+        fetch(`/api/auth`, {
+    method: 'post',
+    body: JSON.stringify({ email: userName, password: password }),
+        headers: {'Content-type': 'application/json; charset=UTF-8',},
+    })
     localStorage.setItem('userName', userName);
     localStorage.setItem('password', password);
     localStorage.setItem('authState', 'true');
   }
 
   async function createUser() {
+    fetch('/api/auth', {
+    method: 'post',
+    body: JSON.stringify({ email: userName, password: password }),
+        headers: {'Content-type': 'application/json; charset=UTF-8',},
+    })
     localStorage.setItem('userName', userName);
     localStorage.setItem('password', password);
     localStorage.setItem('authState', true);
+
   }
     async function logoutUser() {
     localStorage.setItem('userName', '');
     localStorage.setItem('password', '');
     localStorage.setItem('authState', false);
+    fetch('/api/auth', {
+      method: 'delete'
+    })
   }
   return (
     
