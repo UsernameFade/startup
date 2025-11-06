@@ -14,16 +14,33 @@ app.use(`/api`, apiRouter);
 app.use(express.json());
 
 
+
 app.get('*', (_req, res) => {
-  res.send({msg:"Again"});
+  res.send({msg:"Error"});
 });
 
 
-apiRouter.get('/story', (_req, res) => {
+apiRouter.get('/story', (req, res) => {
   res.send({msg:Story});
 });
 
+apiRouter.post('/auth', async (req, res) => {
+  res.send({ email: 'test' });
+});
+
+apiRouter.put('/auth', async (req, res) => {
+  res.send({ email: 'test' });
+});
+
+apiRouter.delete('/auth', async (req, res) => {
+  res.send({});
+});
+
+apiRouter.get('/user', async (req, res) => {
+  res.send({ email: 'test' });
+});
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
