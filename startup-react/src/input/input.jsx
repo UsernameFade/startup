@@ -14,12 +14,14 @@ if(localStorage.getItem('storyData') === null){
     const handleStoryChange = (event) => {
         setStory(event.target.value);
     };
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(story);
         if(localStorage.getItem('storyData') === null){
           localStorage.setItem('storyData', "");
         }
+        
+
         localStorage.setItem('storyData', story+ "\n" + localStorage.getItem('storyData'));
     };
 
@@ -33,7 +35,7 @@ if(localStorage.getItem('storyData') === null){
     })
     .catch();
       }, []);
-https://api.adviceslip.com/advice
+
 
 
 
@@ -43,7 +45,7 @@ https://api.adviceslip.com/advice
         <h2>Add to the story here!</h2>
         <input type="text" id="storyInput" name="storyInput" onChange={(handleStoryChange)}></input>
         <input type="submit" value="Submit" onClick={(handleSubmit)}></input>
-      <h3>Writing Prompt: {prompt}</h3>
+      <h3>Advice: {prompt}</h3>
       <h3>Signed in as:</h3>
       <h3>{userName}</h3>
 
