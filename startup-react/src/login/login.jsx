@@ -3,38 +3,43 @@ import './login.css';
 
 
 export function Login() {
+
   const [userName, setUserName] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   async function loginUser() {
-        fetch(`/api/auth`, {
-    method: 'post',
-    body: JSON.stringify({ email: userName, password: password }),
-        headers: {'Content-type': 'application/json; charset=UTF-8',},
-    })
+    console.log("Fetch Test");
+
+
+
     localStorage.setItem('userName', userName);
     localStorage.setItem('password', password);
     localStorage.setItem('authState', 'true');
+
   }
 
   async function createUser() {
-    fetch('/api/auth', {
-    method: 'post',
-    body: JSON.stringify({ email: userName, password: password }),
-        headers: {'Content-type': 'application/json; charset=UTF-8',},
-    })
+    
+
     localStorage.setItem('userName', userName);
     localStorage.setItem('password', password);
     localStorage.setItem('authState', true);
-
+    const response = await fetch(`/api/auth/create`, {
+    method: 'post',
+    body: JSON.stringify({ email: userName, password: password }),
+        headers: {'Content-type': 'application/json; charset=UTF-8',},
+    });
   }
     async function logoutUser() {
     localStorage.setItem('userName', '');
     localStorage.setItem('password', '');
     localStorage.setItem('authState', false);
-    fetch('/api/auth', {
-      method: 'delete'
+    fetch('/api/auth/logout', {
+      method: 'delete',
     })
+      .catch(() => {
+
+      })
   }
   return (
     

@@ -5,9 +5,10 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 
+
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
-const Story = "";
+const Story = "Success";
 const users = [];
 let apiRouter = express.Router();
 
@@ -15,9 +16,17 @@ app.use(`/api`, apiRouter);
 app.use(express.json());
 app.use(cookieParser());
 
+app.use(express.static('public'));
+
 
 
 token: uuid.v4();
+
+app.use((_req, res) => {
+  res.sendFile('index.html', {root: 'public' });
+
+});
+
 
 app.get('*', (_req, res) => {
   res.send({msg:"Error"});
@@ -27,6 +36,7 @@ app.get('*', (_req, res) => {
 apiRouter.get('/story', (req, res) => {
   res.send({msg:Story});
 });
+
 
 
 
@@ -55,7 +65,7 @@ function getUser(field, value) {
 
 app.post('/api/auth', async (req, res) => {
   if (await getUser('email', req.body.email)) {
-    res.status(409).send({ msg: 'Existing user' });
+    res.status(409).send({ msg: 'Username Taken' });
   } else {
     const user = await createUser(req.body.email, req.body.password);
     setAuthCookie(res, user);
@@ -64,7 +74,7 @@ app.post('/api/auth', async (req, res) => {
   }
 });
 
-app.put('/api/auth', async (req, res) => {
+app.post('/api/auth/create', async (req, res) => {
   const user = await getUser('email', req.body.email);
   if (user && (await bcrypt.compare(req.body.password, user.password))) {
     setAuthCookie(res, user);
@@ -132,7 +142,12 @@ function clearAuthCookie(res, user) {
   res.clearCookie('token');
 }
 
+
+
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+
 

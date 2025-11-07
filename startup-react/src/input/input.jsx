@@ -17,6 +17,7 @@ if(localStorage.getItem('storyData') === null){
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(story);
+
         if(localStorage.getItem('storyData') === null){
           localStorage.setItem('storyData', "");
         }
