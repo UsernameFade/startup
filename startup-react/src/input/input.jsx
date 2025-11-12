@@ -11,6 +11,17 @@ if(localStorage.getItem('storyData') === null){
         }
   
 
+
+  async function storyUpdate(story) {
+    const storyJSON = { msg: story };
+
+    await fetch('/story', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(storyJSON),
+    });
+  }
+
     const handleStoryChange = (event) => {
         setStory(event.target.value);
     };
@@ -24,7 +35,13 @@ if(localStorage.getItem('storyData') === null){
         
 
         localStorage.setItem('storyData', story+ "\n" + localStorage.getItem('storyData'));
+        storyUpdate(story);
     };
+
+
+
+
+
 
     if(authState){
       React.useEffect(() => {

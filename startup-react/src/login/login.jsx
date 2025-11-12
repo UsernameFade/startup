@@ -24,7 +24,7 @@ export function Login() {
     localStorage.setItem('userName', userName);
     localStorage.setItem('password', password);
     localStorage.setItem('authState', true);
-    const response = await fetch(`/api/auth/create`, {
+    const response = await fetch(`/auth/create`, {
     method: 'post',
     body: JSON.stringify({ email: userName, password: password }),
         headers: {'Content-type': 'application/json; charset=UTF-8',},
