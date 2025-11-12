@@ -35,7 +35,7 @@ apiRouter.get('/story', (req, res) => {
 });
 
 apiRouter.post('/story',(req, res) => {
-  Story="Success 3";
+  Story=Story+"\n"+req.body.msg;
   res.send({msg:Story});
 });
 
@@ -45,14 +45,9 @@ apiRouter.post('/story',(req, res) => {
 // CreateAuth a new user
 
 apiRouter.post('/auth/create', async (req, res) => {
-  console.log(req.body);
-  console.log("test");
-  console.log(req.body.password);
-
     
   if (await findUser('email', req.body.email)) {
-      console.log("test2");
-    res.status(409).send({ msg: 'Existing user' });
+    res.status(409).send({ msg: 'Username Taken' });
   } else {
     const user = await createUser(req.body.email, req.body.password);
 

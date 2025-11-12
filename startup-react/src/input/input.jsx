@@ -13,9 +13,9 @@ if(localStorage.getItem('storyData') === null){
 
 
   async function storyUpdate(story) {
-    const storyJSON = { msg: story };
+    const storyJSON = { "msg": story };
 
-    await fetch('/story', {
+    await fetch('/api/story', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(storyJSON),
