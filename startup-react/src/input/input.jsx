@@ -1,6 +1,7 @@
 import React from 'react';
 import './input.css';
 
+
 export function Input() {
   const [story, setStory] = React.useState('');
   const userName = localStorage.getItem('userName');
@@ -43,7 +44,7 @@ if(localStorage.getItem('storyData') === null){
 
 
 
-    if(authState){
+    if(true){
       React.useEffect(() => {
 
         fetch('https://api.adviceslip.com/advice')
