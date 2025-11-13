@@ -5,21 +5,29 @@ import { useNavigate } from 'react-router-dom';
 
 
 export function Login() {
-
+  const [errorMessage, setErrorMessage] = React.useState([]);
   const navigate = useNavigate();
 
   const [userName, setUserName] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   async function loginUser() {
-    console.log("Fetch Test");
-
-
 
     localStorage.setItem('userName', userName);
     localStorage.setItem('password', password);
     localStorage.setItem('authState', 'true');
-
+    const response = await fetch(`/api/auth/login`, {
+    method: 'post',
+    body: JSON.stringify({ "email": userName, "password": password }),
+        headers: {'Content-type': 'application/json'},
+    });
+    const responseString = await response.json();
+    if (responseString.msg === "Unauthorized"){
+      setErrorMessage("Incorrect Username or Password");
+    }else{
+      navigate('/input');
+    }
+    
   }
 
   async function createUser() {
@@ -33,7 +41,13 @@ export function Login() {
     body: JSON.stringify({ "email": userName, "password": password }),
         headers: {'Content-type': 'application/json'},
     });
-    navigate('/input');
+    const responseString = await response.json();
+    if (responseString.msg === "Username Taken"){
+      setErrorMessage("Username Taken");
+    }else{
+      navigate('/input');
+    }
+
   }
     async function logoutUser() {
     localStorage.setItem('userName', '');
@@ -57,6 +71,7 @@ export function Login() {
         <div >
           <input type="password" className="form-control" placeholder="password" onChange={(e) => setPassword(e.target.value)}  />
         </div>
+        <h3>{errorMessage}</h3>
         <button type="button" className="btn btn-outline-dark"  disabled={!userName || !password} onClick={loginUser} >Login</button>
         <button type="button" className="btn btn-outline-dark"   onClick={createUser} disabled={!userName || !password}>Create</button>
         
