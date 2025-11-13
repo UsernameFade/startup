@@ -13,9 +13,8 @@ export function Login() {
 
   async function loginUser() {
 
-    localStorage.setItem('userName', userName);
-    localStorage.setItem('password', password);
-    localStorage.setItem('authState', 'true');
+
+
     const response = await fetch(`/api/auth/login`, {
     method: 'post',
     body: JSON.stringify({ "email": userName, "password": password }),
@@ -25,6 +24,7 @@ export function Login() {
     if (responseString.msg === "Unauthorized"){
       setErrorMessage("Incorrect Username or Password");
     }else{
+      localStorage.setItem('userName', userName);
       navigate('/input');
     }
     
@@ -33,9 +33,8 @@ export function Login() {
   async function createUser() {
     
     
-    localStorage.setItem('userName', userName);
-    localStorage.setItem('password', password);
-    localStorage.setItem('authState', true);
+    
+
     const response = await fetch(`/api/auth/create`, {
     method: 'post',
     body: JSON.stringify({ "email": userName, "password": password }),
@@ -45,14 +44,14 @@ export function Login() {
     if (responseString.msg === "Username Taken"){
       setErrorMessage("Username Taken");
     }else{
+      localStorage.setItem('userName', userName);
       navigate('/input');
+      
     }
 
   }
     async function logoutUser() {
     localStorage.setItem('userName', '');
-    localStorage.setItem('password', '');
-    localStorage.setItem('authState', false);
     fetch('/api/auth/logout', {
       method: 'delete',
     })
