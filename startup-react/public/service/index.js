@@ -45,10 +45,12 @@ apiRouter.post('/story',(req, res) => {
 // CreateAuth a new user
 
 apiRouter.post('/auth/create', async (req, res) => {
-    
+    console.log("test");
+
   if (await findUser('email', req.body.email)) {
     res.status(409).send({ msg: 'Username Taken' });
   } else {
+        console.log("test2");
     const user = await createUser(req.body.email, req.body.password);
 
    setAuthCookie(res, user.token);
