@@ -1,23 +1,30 @@
-const express = require('express');
-const app = express();
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
+const express = require('express');
 const uuid = require('uuid');
+const app = express();
+
+
+
 
 const authCookieName = 'token';
-
-const port = process.argv.length > 2 ? process.argv[2] : 4000;
-
 var Story = "The Story Began With...";
 let users = [];
-
-var apiRouter = express.Router();
-
-app.use(express.json());
-app.use(`/api`, apiRouter);
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 app.use(cookieParser());
 app.use(express.static('public'));
+
+
+
+app.use(express.json());
+var apiRouter = express.Router();
+app.use(`/api`, apiRouter);
+
+
+
+
+
 
 
 app.use((_req, res) => {
@@ -38,31 +45,6 @@ app.use(function (err, req, res, next) {
 apiRouter.get('/story', (req, res) => {
   res.send({msg:Story});
 });
-
-
-// Middleware to verify that the user is authorized to call an endpoint
-const verifyAuth = async (req, res, next) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
-  if (user) {
-    next();
-  } else {
-    res.status(401).send({ msg: 'Unauthorized' });
-  }
-};
-
-apiRouter.post('/story' ,verifyAuth, async (req, res) => {
-  Story=Story+"\n"+req.body.msg;
-  res.send({msg:Story});
-});
-
-apiRouter.get('/auth', (req, res) => {
-  res.send({"msg":true});
-
-});
-
-//Most is this code is from the login page on github.
-
-// CreateAuth a new user
 
 //Test Command: 
 // curl -X POST http://localhost:4000/api/auth/create -H "Content-Type: application/json; charset=UTF-8" -d '{"email":"testEmail.com", "password":"testPassword"}'
@@ -98,6 +80,8 @@ apiRouter.post('/auth/login', async (req, res) => {
 
 // DeleteAuth logout a user
 apiRouter.delete('/auth/logout', async (req, res) => {
+  console.log("test");
+  console.log(req.cookies[authCookieName]);
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
@@ -126,6 +110,29 @@ async function findUser(field, value) {
 
   return users.find((u) => u[field] === value);
 }
+
+// Middleware to verify that the user is authorized to call an endpoint
+const verifyAuth = async (req, res, next) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+};
+
+apiRouter.post('/story' ,verifyAuth, async (req, res) => {
+  Story=Story+"\n"+req.body.msg;
+  res.send({msg:Story});
+});
+
+
+
+//Most is this code is from the login page on github.
+
+// CreateAuth a new user
+
+
 
 // setAuthCookie in the HTTP response
 function setAuthCookie(res, authToken) {
