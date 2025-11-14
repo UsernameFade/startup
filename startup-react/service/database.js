@@ -41,7 +41,6 @@ async function updateStory(story) {
 }
 
 async function getStory() {
- // const storyMongo = await storyCollection.findOne({ story: "main" });
   return await storyCollection.findOne({ story: "main" });;
 }
 
