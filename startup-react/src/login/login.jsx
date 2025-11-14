@@ -31,9 +31,6 @@ export function Login() {
   }
 
   async function createUser() {
-    
-    
-    
 
     const response = await fetch(`/api/auth/create`, {
     method: 'post',

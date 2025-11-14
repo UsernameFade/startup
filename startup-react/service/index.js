@@ -3,13 +3,13 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
-
+const DB = require('./database.js');
 
 
 
 const authCookieName = 'token';
 var Story = "The Story Began With...";
-let users = [];
+
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 app.use(cookieParser());
@@ -20,10 +20,6 @@ app.use(express.static('public'));
 app.use(express.json());
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
-
-
-
-
 
 
 
@@ -49,8 +45,6 @@ apiRouter.get('/story', (req, res) => {
 //Test Command: 
 // curl -X POST http://localhost:4000/api/auth/create -H "Content-Type: application/json; charset=UTF-8" -d '{"email":"testEmail.com", "password":"testPassword"}'
 
-
-
 apiRouter.post('/auth/create', async (req, res) => {
 
   if (await findUser('email', req.body.email)) {
@@ -64,12 +58,12 @@ apiRouter.post('/auth/create', async (req, res) => {
     
 });
 
-// GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
   const user = await findUser('email', req.body.email);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
           user.token = uuid.v4();
+          await DB.updateUser(user);
       setAuthCookie(res, user.token);
       res.send({ email: user.email });
       return;
@@ -78,18 +72,15 @@ apiRouter.post('/auth/login', async (req, res) => {
   res.status(401).send({ msg: 'Unauthorized' });
 });
 
-// DeleteAuth logout a user
 apiRouter.delete('/auth/logout', async (req, res) => {
-  console.log("test");
-  console.log(req.cookies[authCookieName]);
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
+    DB.updateUser(user);
   }
   res.clearCookie(authCookieName);
   res.status(204).end();
 });
-
 
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
@@ -99,19 +90,21 @@ async function createUser(email, password) {
     password: passwordHash,
     token: uuid.v4(),
   };
-  users.push(user);
+  await DB.addUser(user);
+
 
   return user;
 }
 
 async function findUser(field, value) {
-
   if (!value) return null;
 
-  return users.find((u) => u[field] === value);
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
 }
 
-// Middleware to verify that the user is authorized to call an endpoint
 const verifyAuth = async (req, res, next) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
@@ -123,18 +116,11 @@ const verifyAuth = async (req, res, next) => {
 
 apiRouter.post('/story' ,verifyAuth, async (req, res) => {
   Story=Story+"\n"+req.body.msg;
+  DB.updateStory({msg:Story});
   res.send({msg:Story});
+  
 });
 
-
-
-//Most is this code is from the login page on github.
-
-// CreateAuth a new user
-
-
-
-// setAuthCookie in the HTTP response
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
     maxAge: 1000 * 60 * 60 * 24 * 365,
@@ -144,9 +130,6 @@ function setAuthCookie(res, authToken) {
   });
 
 }
-
-
-
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
