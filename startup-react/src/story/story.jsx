@@ -8,6 +8,7 @@ export function Story() {
 
       const storyTest = localStorage.getItem('storyData');
     const [story, setStory] = React.useState([]);
+  
   React.useEffect(() => {
     fetch('/api/story')
       .then((response) => response.json())
@@ -15,6 +16,8 @@ export function Story() {
         setStory(story.msg);
       });
   }, []);
+
+
 
   return (
     

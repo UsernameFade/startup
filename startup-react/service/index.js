@@ -38,8 +38,10 @@ app.use(function (err, req, res, next) {
 });
 
 
-apiRouter.get('/story', (req, res) => {
-  res.send({msg:Story});
+apiRouter.get('/story', async (req, res) => {
+  //res.send({msg:Story});
+  //const storyResponse= await DB.getStory();
+  res.send(await DB.getStory());
 });
 
 //Test Command: 
@@ -116,7 +118,7 @@ const verifyAuth = async (req, res, next) => {
 
 apiRouter.post('/story' ,verifyAuth, async (req, res) => {
   Story=Story+"\n"+req.body.msg;
-  DB.updateStory({msg:Story});
+  DB.updateStory({msg:Story,story:"main"});
   res.send({msg:Story});
   
 });

@@ -35,8 +35,14 @@ async function updateUser(user) {
 }
 
 async function updateStory(story) {
+  //This can probably be improved
   await storyCollection.deleteMany({});
   await storyCollection.insertOne(story);
+}
+
+async function getStory() {
+ // const storyMongo = await storyCollection.findOne({ story: "main" });
+  return await storyCollection.findOne({ story: "main" });;
 }
 
 
@@ -45,6 +51,7 @@ getUser,
 getUserByToken,
 addUser,
 updateUser,
-updateStory
+updateStory,
+getStory
 
 };
