@@ -94,27 +94,27 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - React functionality allows for client side use of the website using local storage.
+- [x] **Hooks** - Uses react hooks to update the webpage.
 
 ## 🚀 Service deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - Service uses Express to log users in and out of the service, and to allow users to add to a story
+- [x] **Static middleware for frontend** - Middleware checks if users are logged in
+- [x] **Calls to third party endpoints** - Website calls an endpoint that returns advice
+- [x] **Backend service endpoints** - Backend endpoints manage accounts and story data
+- [x] **Frontend calls service endpoints** - Frontend calls endpoints that manage logins, and that accesses the story.
+- [x] **Supports registration, login, logout, and restricted endpoint** - Users can login and logout. Users who are not signed in cannot access the endpoint that updates the story. 
 
 
 ## 🚀 DB deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores data in MongoDB** - Story data is stored in MongoDB
+- [x] **Stores credentials in MongoDB** - Account data stored in MongoDB
 
 ## 🚀 WebSocket deliverable
 
