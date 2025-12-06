@@ -113,15 +113,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores data in MongoDB** - Story is saved on MongoDB.
+- [x] **Stores credentials in MongoDB** - MongoDB is used to save hashed passwords and usernames, and then used to access them. 
 
 ## 🚀 WebSocket deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - Backend listens for when a user submits text on the input page. 
+- [x] **Frontend makes WebSocket connection** - Frontend connects to the backend on the input page.
+- [x] **Data sent over WebSocket connection** - Story submission data and username data is sent over websocket
+- [x] **WebSocket data displayed** - The last person to update the story is displayed on the input page. 
+- [x] **Application is fully functional** - Application is fully functional. 
