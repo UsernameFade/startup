@@ -27,11 +27,12 @@ if(localStorage.getItem('storyData') === null){
   }
   React.useEffect(() => {
   function handleStoryEvent(event) {
-    console.log("Success1");
-    console.log(event);
     setLastUpdate("Last change to the story was: "+ event.story + " By user: " +event.name);
   }
   StoryNotifier.setHandler(handleStoryEvent);
+      return () => {
+      StoryNotifier.removeHandler(handleStoryEvent);
+    };
 }, []);
 
     const handleStoryChange = (event) => {
