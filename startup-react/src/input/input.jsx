@@ -1,31 +1,27 @@
 import React from 'react';
 import './input.css';
 import { StoryNotifier } from './storyNotifier';
+import WebSocket from 'ws';
 
 export function Input() {
   const [story, setStory] = React.useState('');
   const userName = localStorage.getItem('userName');
   const authState= localStorage.getItem('authState')
   const [prompt, setPrompt] = React.useState('');
-  const test ="test";
-
+  var test ="test";
+  
 
 if(localStorage.getItem('storyData') === null){
           localStorage.setItem('storyData', "");
         }
-  
-  React.useEffect(() => {
-    StoryNotifier.addHandler(handleStoryEvent);
-
-    return () => {
-      StoryNotifier.removeHandler(handleStoryEvent);
-    };
-  });
-
-  webSocket.onmessage = (event) => {
+      
+  function handleStoryEvent(event){
+    
     const msgTest = JSON.parse(event.data);
-    test=msgTest;
+    test="success";
   }
+  StoryNotifier.setHandler(handleStoryEvent);
+
 
   async function storyUpdate(story) {
     const storyJSON = { "msg": story };
