@@ -1,27 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './input.css';
 import { StoryNotifier } from './storyNotifier';
-import WebSocket from 'ws';
+
 
 export function Input() {
   const [story, setStory] = React.useState('');
   const userName = localStorage.getItem('userName');
   const authState= localStorage.getItem('authState')
   const [prompt, setPrompt] = React.useState('');
-  var test ="test";
+  const [lastUpdate, setLastUpdate] = React.useState("No new updates");
   
 
 if(localStorage.getItem('storyData') === null){
           localStorage.setItem('storyData', "");
         }
       
-  function handleStoryEvent(event){
-    
-    const msgTest = JSON.parse(event.data);
-    test="success";
-  }
-  StoryNotifier.setHandler(handleStoryEvent);
-
 
   async function storyUpdate(story) {
     const storyJSON = { "msg": story };
@@ -32,12 +25,20 @@ if(localStorage.getItem('storyData') === null){
       body: JSON.stringify(storyJSON),
     });
   }
+  React.useEffect(() => {
+  function handleStoryEvent(event) {
+    console.log("Success1");
+    console.log(event);
+    setLastUpdate("Last change to the story was: "+ event.story + " By user: " +event.name);
+  }
+  StoryNotifier.setHandler(handleStoryEvent);
+}, []);
 
     const handleStoryChange = (event) => {
         setStory(event.target.value);
     };
     const handleSubmit = async (event) => {
-        StoryNotifier.sendMessage("test", "test");
+        StoryNotifier.sendMessage(story, userName);
         event.preventDefault();
         console.log(story);
 
@@ -80,7 +81,7 @@ if(localStorage.getItem('storyData') === null){
       <h3>Advice: {prompt}</h3>
       <h3>Signed in as:</h3>
       <h3>{userName}</h3>
-      <h3>{test}</h3>
+      <h3>{lastUpdate}</h3>
 
     </main>
  )}else{
