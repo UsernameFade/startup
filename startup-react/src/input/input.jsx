@@ -1,17 +1,31 @@
 import React from 'react';
 import './input.css';
-
+import { StoryNotifier } from './storyNotifier';
 
 export function Input() {
   const [story, setStory] = React.useState('');
   const userName = localStorage.getItem('userName');
   const authState= localStorage.getItem('authState')
   const [prompt, setPrompt] = React.useState('');
+  const test ="test";
+
+
 if(localStorage.getItem('storyData') === null){
           localStorage.setItem('storyData', "");
         }
   
+  React.useEffect(() => {
+    StoryNotifier.addHandler(handleStoryEvent);
 
+    return () => {
+      StoryNotifier.removeHandler(handleStoryEvent);
+    };
+  });
+
+  webSocket.onmessage = (event) => {
+    const msgTest = JSON.parse(event.data);
+    test=msgTest;
+  }
 
   async function storyUpdate(story) {
     const storyJSON = { "msg": story };
@@ -27,8 +41,10 @@ if(localStorage.getItem('storyData') === null){
         setStory(event.target.value);
     };
     const handleSubmit = async (event) => {
+        StoryNotifier.sendMessage("test", "test");
         event.preventDefault();
         console.log(story);
+
 
         if(localStorage.getItem('storyData') === null){
           localStorage.setItem('storyData', "");
@@ -37,6 +53,7 @@ if(localStorage.getItem('storyData') === null){
 
         localStorage.setItem('storyData', story+ "\n" + localStorage.getItem('storyData'));
         storyUpdate(story);
+        
     };
 
 
@@ -67,6 +84,7 @@ if(localStorage.getItem('storyData') === null){
       <h3>Advice: {prompt}</h3>
       <h3>Signed in as:</h3>
       <h3>{userName}</h3>
+      <h3>{test}</h3>
 
     </main>
  )}else{
